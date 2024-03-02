@@ -1,7 +1,10 @@
 package co.edu.uniquindio.poo;
 
-    public class Conexion{
-        private static String username;
+import java.util.Collection;
+import java.util.LinkedList;
+
+public class Conexion{
+        private static Collection<Usuario>usuarios= new LinkedList<>();
         private String pass;
         private String codificacion;
         private int tiempoEspera;
@@ -9,7 +12,7 @@ package co.edu.uniquindio.poo;
         private boolean sst;
         private short port;
         private String baseDeDatos;
-        private Conexion(String username, String pass, String codificacion, int tiempoEspera, byte reintentos, boolean sst,short port, String baseDeDatos) {
+        private Conexion(String pass, String codificacion, int tiempoEspera, byte reintentos, boolean sst,short port, String baseDeDatos) {
             this.pass = pass;
             this.codificacion = codificacion;
             this.tiempoEspera = tiempoEspera;
@@ -18,8 +21,10 @@ package co.edu.uniquindio.poo;
             this.port = port;
             this.baseDeDatos = baseDeDatos;
         }
-        public static getInstance(){
-
+        public static Conexion getInstance(String pass, String codificacion, int tiempoEspera, byte reintentos, boolean sst,short port, String baseDeDatos){
+        Collection<Usuario>usuarios=Conexion.usuarios;
+        
+        return new Conexion(pass, codificacion, tiempoEspera, reintentos, sst, port, baseDeDatos);
         }
         public String getPass() {
             return pass;
@@ -90,7 +95,7 @@ package co.edu.uniquindio.poo;
             return this;
         }
         public Conexion build(){
-            return new Conexion(this.username, this.pass,this.codificacion, this.tiempoEspera, this.reintentos, this.sst, this.port, this.baseDeDatos);
+            return Conexion.getInstance();
         }
 
     }
