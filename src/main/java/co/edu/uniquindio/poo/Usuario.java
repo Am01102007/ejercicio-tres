@@ -1,8 +1,8 @@
 package co.edu.uniquindio.poo;
 
 public class Usuario {
-    private String identificacion;
-    private String nombre;
+    private final String identificacion;
+    private final String nombre;
     private Conexion conexion;
     public Usuario(String identificacion, String nombre, Conexion conexion) {
         this.identificacion = identificacion;
